@@ -13,6 +13,8 @@ router.get("/", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
+    await db("resources").insert(req.body);
+    res.status(201).json(req.body);
   } catch (err) {
     next(err);
   }
